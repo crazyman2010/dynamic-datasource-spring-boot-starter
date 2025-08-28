@@ -33,6 +33,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
 import java.lang.reflect.Field;
@@ -59,9 +60,6 @@ public class DynamicRoutingDataSource extends AbstractRoutingDataSource implemen
      * 分组数据库
      */
     private final Map<String, GroupDataSource> groupDataSources = new ConcurrentHashMap<>();
-
-    @Autowired
-    private List<DynamicDataSourceProvider> providers;
 
     @Autowired
     private List<RuntimeDataSourceProvider> runtimeProviders;
@@ -326,6 +324,9 @@ public class DynamicRoutingDataSource extends AbstractRoutingDataSource implemen
     }
 
     private DataSource getDataSourceFromRuntime(String key) {
+        if (runtimeProviders == null) {
+            return null;
+        }
         DataSource dataSource;
         for (RuntimeDataSourceProvider provider : runtimeProviders) {
             dataSource = provider.getDataSource(key);

@@ -25,9 +25,7 @@ import com.baomidou.dynamic.datasource.processor.DsHeaderProcessor;
 import com.baomidou.dynamic.datasource.processor.DsProcessor;
 import com.baomidou.dynamic.datasource.processor.DsSessionProcessor;
 import com.baomidou.dynamic.datasource.processor.DsSpelExpressionProcessor;
-import com.baomidou.dynamic.datasource.provider.DefaultRuntimeDataSourceProvider;
 import com.baomidou.dynamic.datasource.provider.DynamicDataSourceProvider;
-import com.baomidou.dynamic.datasource.provider.RuntimeDataSourceProvider;
 import com.baomidou.dynamic.datasource.strategy.DynamicDataSourceStrategy;
 import org.springframework.aop.Advisor;
 import org.springframework.beans.factory.BeanFactory;
@@ -62,11 +60,6 @@ public class DynamicDataSourceAopConfiguration {
     @Bean
     public static DynamicDataSourceProperties dynamicDataSourceProperties() {
         return new DynamicDataSourceProperties();
-    }
-
-    @Bean
-    public RuntimeDataSourceProvider defaultRuntimeDataSourceProvider() {
-        return new DefaultRuntimeDataSourceProvider();
     }
 
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)

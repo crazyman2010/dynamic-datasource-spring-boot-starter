@@ -35,6 +35,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(classes = LoadDatasourceFromJDBCApplication.class, webEnvironment = RANDOM_PORT)
