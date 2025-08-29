@@ -1,3 +1,21 @@
+<p>
+和主仓库的区别：
+增加了RuntimeDataSourceProvider 用于实时创建数据库连接池，适应租户连接池懒加载场景
+在每次确定数据库连接的时候，会查询这个接口
+
+``` java
+public interface RuntimeDataSourceProvider {
+    /**
+     * 实时获取数据源
+     *
+     * @param key 数据源名称
+     */
+    DataSource getDataSource(String key);
+}
+```
+
+</p>
+
 <p align="center">
 <img src="https://images.gitee.com/uploads/images/2019/0626/231046_f44892b9_709883.png" border="0" />
 
