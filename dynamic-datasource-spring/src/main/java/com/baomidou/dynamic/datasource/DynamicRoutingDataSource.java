@@ -61,7 +61,7 @@ public class DynamicRoutingDataSource extends AbstractRoutingDataSource implemen
      */
     private final Map<String, GroupDataSource> groupDataSources = new ConcurrentHashMap<>();
 
-    @Autowired
+    @Autowired(required = false)
     private List<RuntimeDataSourceProvider> runtimeProviders;
 
     private final List<DynamicDataSourceProvider> providers;
